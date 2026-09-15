@@ -18,4 +18,9 @@ def two_sum(nums: list[int], target: int) -> list[int]:
 
     Target complexity: O(n) time using a dict (hash map).
     """
-    raise NotImplementedError
+    seen = {}  # the "notebook": number -> position where we saw it
+    for i, n in enumerate(nums):
+        complement = target - n          # the number we'd need to pair with n
+        if complement in seen:
+            return [seen[complement], i]  # found a match: earlier position + current position
+        seen[n] = i                       # not found yet, write n into the notebook
